@@ -11,31 +11,50 @@ Customs and baggage rules differ by country and change often. Blogs and forums a
 
 ## How it works
 1. **Ask in plain words.** Pick the route (from → to, optional airline) and type the item.
-2. **Read only official pages.** Live search is limited to an allow-list of government and airline domains.
-3. **Verdict with proof.** The LLM answers only from the fetched text and must quote it. If no official source matches, it says **Not sure** instead of guessing.
+2. **Retrieve from official pages only.** At ingest time the backend fetches an allow-list of government customs and aviation-safety pages (HTML and PDF), chunks them and embeds them with Gemini. At question time it runs hybrid retrieval (Gemini embeddings + BM25), filtered to the origin, destination and global aviation rules, boosted toward the destination country's customs rules.
+3. **Grounded verdict with proof.** Gemini 2.5 Flash answers **only** from the retrieved excerpts, in a strict JSON schema, and must copy a verbatim quote and the excerpt number.
+4. **Quote verification.** The backend checks the quote really appears in that official excerpt (exact or ≥92% fuzzy match). If it doesn't, or the sources don't cover the route, the answer is **⚪ Not sure** instead of a guess.
 
 ## Architecture
 ```
 Browser (frontend/index.html)
    │  POST /api/check {from, to, airline, question}
    ▼
-FastAPI backend on Vultr Compute
-   │  1. Exa search restricted to official domains
-   │  2. Gemini answers ONLY from fetched text, quote required
+FastAPI on Vultr Compute (Docker)
+   ├─ ingest.py   fetch allow-listed pages → clean → chunk → Gemini embeddings → data/
+   ├─ rag.py      hybrid search (dense + BM25), country filter, destination boost
+   │              Gemini 2.5 Flash, JSON schema, verbatim quote required
+   │              quote verified against the source text, else "Not sure"
+   └─ app.py      /api/check · /api/sources · /api/health · serves the frontend · cache · rate limit
    ▼
-Verdict JSON {verdict, answer, limit, quote, source_name, source_url, fetched}
+{verdict, answer, limit, quote, source_name, source_url, fetched}
 ```
 
-**Official-source allow-list:** iata.org, faa.gov, u.ae, dubaicustoms.gov.ae, customs.go.jp, cbic.gov.in, gov.uk, cbp.gov, cbsa-asfc.gc.ca, abf.gov.au, ica.gov.sg, zoll.de
+**Official-source allow-list** (`backend/sources.py`): faa.gov, iata.org, tsa.gov, gov.uk, dubaicustoms.gov.ae, u.ae, customs.go.jp, cbic.gov.in, cbp.gov, customs.gov.sg, abf.gov.au, zoll.de, cbsa-asfc.gc.ca. Countries covered: India, UAE, Japan, UK, USA, Singapore, Australia, Germany, Canada, plus aviation rules on every route. Pages that block automated fetches use a dated verbatim snapshot from the same official URL (`backend/seed_snapshots.py`).
 
-## Run the frontend
-It's a static site with no build step.
+## Run locally
 ```bash
-cd frontend
-python3 -m http.server 8080
-# open http://localhost:8080
+cd backend
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env          # add your GEMINI_API_KEY
+python ingest.py              # optional: rebuild the index (a prebuilt one ships in data/)
+uvicorn app:app --port 8000   # open http://localhost:8000
 ```
-With `API_BASE` empty (top of the script in `index.html`) it runs in **demo mode** with four real, sourced answers: power bank, cash into UAE, whisky into Japan, alcohol into Dubai. Set `API_BASE` to your Vultr backend URL (e.g. `http://YOUR_VULTR_IP:8000`) for live answers.
+The frontend is served by the backend, so live answers work out of the box. Opened as a plain file, or if the backend is down, it falls back to four sourced demo answers.
+
+## Deploy on Vultr Compute
+1. Create a Vultr Cloud Compute instance (Ubuntu 24.04, 1 vCPU / 1–2 GB is enough).
+2. SSH in as root and run:
+```bash
+curl -fsSL https://raw.githubusercontent.com/Ak759-wq/Can_I_Bring_It_-/main/deploy/vultr-setup.sh | bash -s -- YOUR_GEMINI_API_KEY
+```
+3. Open `http://YOUR_VULTR_IP/`. That's the public demo URL.
+
+Or manually: `cp backend/.env.example backend/.env`, add the key, then `docker compose up -d --build` (serves on port 80).
+
+## API
+`GET /api/health` · `GET /api/sources` (allow-list and indexed pages)
 
 ## API contract
 `POST /api/check`
@@ -56,7 +75,7 @@ Response:
 ```
 
 ## Tech stack
-HTML/CSS/JS frontend · FastAPI (Python) · Exa search · Google Gemini · Vultr Compute
+HTML/CSS/JS frontend · FastAPI (Python) · Gemini 2.5 Flash + gemini-embedding-001 · BM25 (rank-bm25) · RapidFuzz quote verification · Docker · Vultr Compute
 
 ## Credits
 Illustrations are AI-generated watercolor artwork made for this project. Demo answers are quoted from the FAA, the UAE Government Portal (u.ae), Japan Customs and Dubai Customs.
