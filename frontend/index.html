@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Can I Bring It? · Customs and baggage answers from official sources</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&family=Inter+Tight:wght@500;600&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&display=swap"
+    />
+    <link rel="stylesheet" href="hark.css" />
+    <link rel="stylesheet" href="hark-hero.css" />
+    <style>
+      /* Brand layer for Can I Bring It?: a light watercolor world, so the page stays in light mode. */
+      :root, :root[data-theme] { color-scheme: light; }
+      :root {
+        --x-ink: #111;
+        --x-teal: #2f6b4f;
+        --x-teal-deep: #24553e;
+        --x-peach: #f6b08a;
+        --x-lavender: #b8a6e0;
+        --x-display: "Inter Tight", "Inter", var(--sans);
+        --x-serif: "Fraunces", "Instrument Serif", Georgia, serif;
+        --x-glass: rgb(255 255 255 / 0.62);
+        --x-glass-edge: rgb(255 255 255 / 0.75);
+        --x-shadow: 0 18px 50px rgb(17 17 17 / 0.12), 0 2px 6px rgb(17 17 17 / 0.06);
+        --x-r: 20px;
+        --x-allowed: #1f8a5b;
+        --x-limits: #8a5a00;
+        --x-banned: #c8373d;
+        --x-unsure: #8a8a8f;
+      }
+      html, body { overflow-x: clip; }
+      body { background: #fff; color: var(--x-ink); }
+
+      /* ---------- hero ---------- */
+      .x-hero {
+        position: relative;
+        margin-inline: calc(50% - 50vw);
+        margin-top: -12px;
+        min-height: 100svh;
+        background: #fff;
+        overflow: hidden;
+        isolation: isolate;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px var(--gutter) clamp(180px, 26vw, 300px);
+      }
+      .x-layer { position: absolute; pointer-events: none; will-change: transform; }
+      .x-layer img { display: block; width: 100%; height: auto; }
+      .x-cloud-l { top: -2vw; left: -6vw; width: 38vw; z-index: 1; }
+      .x-cloud-r { top: 1vw; right: -6vw; width: 34vw; z-index: 1; }
+      .x-cloud-l img { animation: x-drift 40s ease-in-out infinite alternate; }
+      .x-cloud-r img { animation: x-drift-r 40s ease-in-out infinite alternate; }
+      @keyframes x-drift { from { transform: translateX(-3vw); } to { transform: translateX(5vw); } }
+      @keyframes x-drift-r { from { transform: translateX(3vw); } to { transform: translateX(-5vw); } }
+
+      .x-sky { inset: 0; z-index: 2; }
+      .x-plane-x { position: absolute; top: 30%; left: 0; animation: x-fly 25s linear infinite; }
+      .x-plane-y { animation: x-bob-path 25s ease-in-out infinite; }
+      .x-plane { position: relative; width: 120px; }
+      .x-plane img { width: 100%; height: auto; display: block; transform: rotate(-4deg); }
+      .x-plane::before {
+        content: "";
+        position: absolute;
+        right: 88%;
+        top: 46%;
+        width: 34vw;
+        border-top: 2px dashed rgb(17 17 17 / 0.16);
+        -webkit-mask-image: linear-gradient(to right, transparent, #000 85%);
+        mask-image: linear-gradient(to right, transparent, #000 85%);
+      }
+      @keyframes x-fly { from { transform: translateX(-160px); } to { transform: translateX(calc(100vw + 40vw)); } }
+      @keyframes x-bob-path {
+        0% { transform: translateY(40px); }
+        25% { transform: translateY(-30px); }
+        50% { transform: translateY(-60px); }
+        75% { transform: translateY(-20px); }
+        100% { transform: translateY(20px); }
+      }
+
+      .x-land { left: -3%; right: -3%; bottom: -2%; height: 62%; z-index: 3; }
+      .x-land img {
+        width: 100%; height: 100%; object-fit: cover; object-position: center bottom;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 32%);
+        mask-image: linear-gradient(to bottom, transparent 0%, #000 32%);
+      }
+
+      .x-petals { inset: 40% 0 0 0; z-index: 4; overflow: hidden; }
+      .x-petals i {
+        position: absolute; top: -20px; width: 10px; height: 7px;
+        border-radius: 70% 0 70% 0;
+        background: linear-gradient(135deg, #f7c6d4, #ee9db6);
+        opacity: 0.85;
+        animation: x-fall 14s linear infinite;
+      }
+      .x-petals i:nth-child(1) { left: 8%; animation-delay: 0s; }
+      .x-petals i:nth-child(2) { left: 22%; animation-delay: -4s; animation-duration: 17s; }
+      .x-petals i:nth-child(3) { left: 37%; animation-delay: -9s; width: 8px; height: 6px; }
+      .x-petals i:nth-child(4) { left: 55%; animation-delay: -2s; animation-duration: 19s; }
+      .x-petals i:nth-child(5) { left: 68%; animation-delay: -11s; }
+      .x-petals i:nth-child(6) { left: 81%; animation-delay: -6s; animation-duration: 16s; width: 8px; height: 6px; }
+      .x-petals i:nth-child(7) { left: 93%; animation-delay: -13s; }
+      @keyframes x-fall {
+        0% { transform: translate(0, 0) rotate(0); opacity: 0; }
+        10% { opacity: 0.85; }
+        50% { transform: translate(40px, 30vh) rotate(200deg); }
+        100% { transform: translate(-10px, 62vh) rotate(420deg); opacity: 0; }
+      }
+
+      .x-badges { inset: 0; z-index: 5; }
+      .x-badge {
+        position: absolute;
+        display: grid; place-items: center; gap: 4px;
+        width: 92px; height: 92px;
+        border-radius: var(--x-r);
+        background: rgb(255 255 255 / 0.42);
+        border: 1px solid var(--x-glass-edge);
+        -webkit-backdrop-filter: blur(14px) saturate(1.4);
+        backdrop-filter: blur(14px) saturate(1.4);
+        box-shadow: var(--x-shadow);
+        font: 600 13px/1.2 var(--x-display);
+        letter-spacing: -0.01em;
+        color: var(--x-ink);
+        text-align: center;
+        animation: x-bob 6s ease-in-out infinite;
+      }
+      .x-badge span { font-size: 22px; line-height: 1; }
+      .x-badge:nth-child(1) { left: 6%; bottom: 14%; }
+      .x-badge:nth-child(2) { right: 7%; bottom: 22%; animation-delay: -2s; }
+      .x-badge:nth-child(3) { right: 19%; bottom: 7%; animation-delay: -4s; width: 80px; height: 80px; }
+      @keyframes x-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+      /* ---------- nav ---------- */
+      .x-nav {
+        position: sticky; top: 14px; z-index: 30;
+        display: flex; align-items: center; gap: 4px;
+        padding: 6px 6px 6px 14px;
+        border-radius: var(--r-pill);
+        background: rgb(255 255 255 / 0.72);
+        border: 1px solid var(--x-glass-edge);
+        -webkit-backdrop-filter: blur(18px) saturate(1.5);
+        backdrop-filter: blur(18px) saturate(1.5);
+        box-shadow: var(--x-shadow);
+        max-width: 100%;
+      }
+      .x-logo { display: flex; align-items: center; min-height: var(--tap); gap: 8px; margin-right: 10px; color: var(--x-ink); text-decoration: none; font: 600 16px/1 var(--x-display); letter-spacing: -0.04em; }
+      .x-logo svg { flex: none; }
+      .x-nav__link { padding: 10px 12px; border-radius: var(--r-pill); color: #3a3a3c; text-decoration: none; font: 500 14px/1 var(--sans); white-space: nowrap; }
+      .x-nav__link:hover { background: rgb(17 17 17 / 0.05); color: var(--x-ink); }
+      .x-btn-teal {
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        min-height: var(--tap);
+        padding: 0 18px;
+        border: 0; border-radius: var(--r-pill);
+        background: var(--x-teal); color: #fff;
+        font: 600 14px/1 var(--sans);
+        text-decoration: none; cursor: pointer; white-space: nowrap;
+        transition: background var(--dur-quick) var(--ease-out), transform var(--dur-quick) var(--ease-out);
+      }
+      .x-btn-teal:hover { background: var(--x-teal-deep); }
+      .x-btn-teal:active { transform: scale(0.97); }
+      .x-btn-teal:focus-visible { outline: 2px solid var(--x-teal); outline-offset: 3px; }
+      .x-nav .x-btn-teal { margin-left: 6px; min-height: var(--tap); }
+
+      /* ---------- headline ---------- */
+      .x-copy { position: relative; z-index: 6; text-align: center; margin-top: clamp(56px, 9vh, 96px); max-width: 900px; }
+      .x-h1 {
+        font: 600 clamp(40px, 7vw, 84px)/0.98 var(--x-display);
+        letter-spacing: -0.04em;
+        color: var(--x-ink);
+        text-wrap: balance;
+      }
+      .x-h1 em, .x-title em { font-family: var(--x-serif); font-style: italic; font-weight: 400; color: var(--x-teal); letter-spacing: -0.02em; }
+      .x-sub { margin: 18px auto 0; max-width: 56ch; font: 400 clamp(16px, 1.6vw, 18px)/1.45 var(--sans); color: #4a4a4f; text-wrap: pretty; }
+
+      /* ---------- console ---------- */
+      .x-console {
+        position: relative; z-index: 7;
+        width: 100%; max-width: 760px;
+        margin-top: 32px;
+        padding: 16px;
+        border-radius: 24px;
+        background: var(--x-glass);
+        border: 1px solid var(--x-glass-edge);
+        -webkit-backdrop-filter: blur(22px) saturate(1.5);
+        backdrop-filter: blur(22px) saturate(1.5);
+        box-shadow: var(--x-shadow);
+        scroll-margin-top: 90px;
+      }
+      .x-route { display: grid; grid-template-columns: 1fr auto 1fr 1fr; gap: 8px; align-items: end; }
+      .x-field { display: grid; gap: 4px; min-width: 0; }
+      .x-field label { font: 500 12px/1.2 var(--sans); color: #55555a; padding-left: 12px; }
+      .x-field select, .x-field input {
+        width: 100%; min-height: var(--tap);
+        padding: 0 12px;
+        border: 1px solid rgb(17 17 17 / 0.1);
+        border-radius: 14px;
+        background: rgb(255 255 255 / 0.8);
+        font: 500 14px/1 var(--sans); color: var(--x-ink);
+      }
+      .x-field select { appearance: none; -webkit-appearance: none; padding-right: 30px; cursor: pointer;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23111' stroke-width='1.5'/%3E%3C/svg%3E");
+        background-repeat: no-repeat; background-position: right 12px center; }
+      .x-field select:focus-visible, .x-field input:focus-visible, .x-ask input:focus-visible { outline: 2px solid var(--x-teal); outline-offset: 1px; }
+      .x-swap {
+        width: var(--tap); height: var(--tap);
+        display: grid; place-items: center;
+        border: 1px solid rgb(17 17 17 / 0.1); border-radius: 50%;
+        background: #fff; color: var(--x-ink); cursor: pointer; font-size: 18px;
+        transition: transform var(--dur-quick) var(--ease-out);
+      }
+      .x-swap:hover { background: color-mix(in srgb, var(--x-teal) 8%, #fff); }
+      .x-swap.is-flipped { transform: rotate(180deg); }
+      .x-swap:focus-visible { outline: 2px solid var(--x-teal); outline-offset: 2px; }
+      .x-ask {
+        display: flex; gap: 8px; align-items: center;
+        margin-top: 10px; padding: 6px 6px 6px 18px;
+        border-radius: 18px; background: #fff;
+        border: 1px solid rgb(17 17 17 / 0.08);
+        box-shadow: 0 2px 10px rgb(17 17 17 / 0.05);
+      }
+      .x-ask input {
+        flex: 1; min-width: 0; min-height: 52px;
+        border: 0; background: transparent;
+        font: 500 clamp(16px, 1.8vw, 19px)/1.2 var(--sans); color: var(--x-ink);
+        letter-spacing: -0.01em;
+        border-radius: 10px;
+      }
+      .x-ask input::placeholder { color: #8a8a8f; }
+      .x-ask .x-btn-teal { min-height: 52px; padding: 0 22px; font-size: 15px; border-radius: 14px; }
+      .x-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; justify-content: center; }
+      .x-chip {
+        min-height: var(--tap); padding: 0 16px;
+        border-radius: var(--r-pill);
+        border: 1px solid rgb(17 17 17 / 0.1);
+        background: rgb(255 255 255 / 0.7);
+        font: 500 13px/1 var(--sans); color: var(--x-ink);
+        cursor: pointer;
+        transition: background var(--dur-quick) var(--ease-out), border-color var(--dur-quick) var(--ease-out);
+      }
+      .x-chip:hover { background: #fff; border-color: var(--x-teal); }
+      .x-chip:focus-visible { outline: 2px solid var(--x-teal); outline-offset: 2px; }
+
+      /* ---------- result ---------- */
+      .x-result { position: relative; z-index: 7; width: 100%; max-width: 760px; margin-top: 16px; }
+      .x-result:empty { display: none; }
+      .x-card {
+        padding: clamp(20px, 3vw, 28px);
+        border-radius: 24px;
+        background: rgb(255 255 255 / 0.86);
+        border: 1px solid var(--x-glass-edge);
+        -webkit-backdrop-filter: blur(24px) saturate(1.5);
+        backdrop-filter: blur(24px) saturate(1.5);
+        box-shadow: var(--x-shadow);
+        animation: x-rise 0.55s var(--ease-out) both;
+        text-align: left;
+      }
+      @keyframes x-rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+      .x-searching { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
+      .x-searching p { font: 600 17px/1.2 var(--x-display); letter-spacing: -0.02em; }
+      .x-dots { display: inline-flex; gap: 3px; margin-left: 2px; }
+      .x-dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--x-teal); animation: x-dot 1s ease-in-out infinite; }
+      .x-dots i:nth-child(2) { animation-delay: 0.15s; }
+      .x-dots i:nth-child(3) { animation-delay: 0.3s; }
+      @keyframes x-dot { 0%, 100% { opacity: 0.25; transform: translateY(0); } 50% { opacity: 1; transform: translateY(-3px); } }
+      .x-ticker { font: 400 12px/1.3 "Geist Mono", monospace; color: #6b6b70; }
+      .x-ticker b { color: var(--x-teal); font-weight: 400; }
+      .x-v-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; justify-content: space-between; }
+      .x-status {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 8px 16px; border-radius: var(--r-pill);
+        font: 600 15px/1 var(--x-display); letter-spacing: -0.01em; color: #fff;
+      }
+      .x-status[data-v="allowed"] { background: var(--x-allowed); }
+      .x-status[data-v="limits"] { background: var(--x-limits); }
+      .x-status[data-v="banned"] { background: var(--x-banned); }
+      .x-status[data-v="unsure"] { background: #ececee; color: var(--x-ink); }
+      .x-tag { padding: 4px 10px; border-radius: var(--r-pill); border: 1px dashed var(--x-lavender); font: 500 12px/1.2 var(--sans); color: #5b4b8a; }
+      .x-route-line { font: 500 13px/1.3 var(--sans); color: #6b6b70; }
+      .x-answer { margin-top: 16px; font: 600 clamp(20px, 2.6vw, 26px)/1.2 var(--x-display); letter-spacing: -0.03em; color: var(--x-ink); text-wrap: balance; }
+      .x-limit { display: grid; grid-template-columns: 80px 1fr; gap: 12px; margin-top: 16px; padding: 12px 0; border-block: 1px solid rgb(17 17 17 / 0.08); font: 400 15px/1.4 var(--sans); }
+      .x-limit dt { font: 500 13px/1.4 var(--sans); color: #6b6b70; }
+      .x-limit dd { margin: 0; }
+      .x-quote { margin: 18px 0 0; padding: 4px 0 4px 18px; border-left: 3px solid var(--x-teal); font: italic 400 clamp(16px, 1.8vw, 18px)/1.5 var(--x-serif); color: #2a2a2d; }
+      .x-src { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 14px; font: 400 14px/1.4 var(--sans); }
+      .x-src { align-items: center; }
+      .x-src a { display: inline-flex; align-items: center; min-height: var(--tap); color: var(--x-teal); font-weight: 500; text-underline-offset: 3px; }
+      .x-src span { color: #6b6b70; }
+      .x-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+      .x-ghost {
+        min-height: var(--tap); padding: 0 16px;
+        border: 1px solid rgb(17 17 17 / 0.14); border-radius: var(--r-pill);
+        background: #fff; color: var(--x-ink);
+        font: 500 14px/1 var(--sans); cursor: pointer;
+      }
+      .x-ghost:hover { border-color: var(--x-teal); }
+      .x-ghost:focus-visible { outline: 2px solid var(--x-teal); outline-offset: 2px; }
+      .x-legal { margin-top: 16px; font: 400 12px/1.4 var(--sans); color: #6b6b70; }
+
+      /* ---------- sections ---------- */
+      .x-title { font: 600 clamp(30px, 4.2vw, 48px)/1.04 var(--x-display); letter-spacing: -0.04em; color: var(--x-ink); text-wrap: balance; }
+      .x-icon { width: 56px; height: 56px; margin-bottom: 14px; display: block; }
+      .x-domains { display: flex; flex-wrap: wrap; gap: 10px; }
+      .x-domains .pill { padding: 10px 16px; font-family: "Geist Mono", monospace; font-size: 14px; }
+      .x-arch { display: flex; align-items: stretch; gap: 0; overflow-x: auto; padding-bottom: 4px; }
+      .x-node {
+        flex: 1 1 0; min-width: 120px;
+        padding: 16px 14px;
+        border-radius: var(--x-r);
+        background: var(--fill-tertiary);
+        border: 1px solid var(--stroke-secondary);
+      }
+      .x-node b { display: block; font: 600 15px/1.2 var(--x-display); letter-spacing: -0.02em; }
+      .x-node small { display: block; margin-top: 6px; font: 400 12px/1.35 var(--sans); color: var(--text-secondary); }
+      .x-node--key { background: color-mix(in srgb, var(--x-teal) 10%, #fff); border-color: color-mix(in srgb, var(--x-teal) 30%, transparent); }
+      .x-arrow { flex: none; width: 30px; display: grid; place-items: center; color: var(--x-teal); }
+      .x-stack { display: flex; flex-wrap: wrap; gap: 8px; }
+      .x-cta {
+        margin-inline: calc(50% - 50vw);
+        padding: clamp(64px, 10vw, 120px) var(--gutter);
+        background:
+          radial-gradient(120% 80% at 85% 100%, rgb(184 166 224 / 0.55), transparent 60%),
+          linear-gradient(120deg, #9fcfb8 0%, #cfe3d2 38%, #f3d2bc 72%, var(--x-peach) 100%);
+        background-color: #e9dccb;
+        color: var(--x-ink); text-align: center;
+      }
+      .x-cta h2 { font: 600 clamp(32px, 5vw, 60px)/1.02 var(--x-display); letter-spacing: -0.04em; text-wrap: balance; text-shadow: 0 2px 24px rgb(17 17 17 / 0.15); }
+      .x-cta h2 { text-shadow: none; }
+      .x-cta h2 em { color: #1e4a35; font-family: var(--x-serif); font-weight: 400; font-style: italic; }
+      .x-cta .x-ghost { margin-top: 28px; min-height: 52px; padding: 0 26px; font-size: 15px; font-weight: 600; border: 0; box-shadow: var(--x-shadow); }
+
+      /* ---------- responsive ---------- */
+      @media (max-width: 899px) {
+        .x-route { grid-template-columns: 1fr auto 1fr; }
+        .x-route .x-field--airline { grid-column: 1 / -1; }
+        .x-arch { flex-direction: column; overflow: visible; }
+        .x-node { min-width: 0; }
+        .x-arrow { width: auto; height: 28px; }
+        .x-arrow svg { transform: rotate(90deg); }
+      }
+      @media (max-width: 599px) {
+        .x-nav__link { display: none; }
+        .x-cloud-l { width: 62vw; top: 4px; left: -16vw; }
+        .x-cloud-r { width: 54vw; top: 30px; right: -16vw; }
+        .x-plane { width: 70px; }
+        .x-plane-x { top: 22%; }
+        .x-route { grid-template-columns: 1fr; }
+        .x-swap { justify-self: center; transform: rotate(90deg); }
+        .x-swap.is-flipped { transform: rotate(270deg); }
+        .x-ask { flex-direction: column; align-items: stretch; padding: 6px; }
+        .x-ask input { padding: 0 12px; }
+        .x-badge { width: 72px; height: 72px; font-size: 12px; }
+        .x-badge span { font-size: 18px; }
+        .x-badge:nth-child(3) { display: none; }
+        .x-land { height: 46%; }
+        .x-limit { grid-template-columns: 1fr; gap: 2px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .x-hero *, .x-card { animation: none !important; transition: none !important; }
+        .x-plane-x { transform: translateX(62vw); top: 24%; }
+        .x-petals { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page" id="top">
+      <section class="x-hero" id="hero" aria-label="Can I Bring It?">
+        <div class="x-layer x-cloud-l" data-depth="28" aria-hidden="true"><img src="cibi-cloud.png" alt="" /></div>
+        <div class="x-layer x-cloud-r" data-depth="22" aria-hidden="true"><img src="cibi-cloud-right.png" alt="" /></div>
+        <div class="x-layer x-sky" data-depth="12" aria-hidden="true">
+          <div class="x-plane-x"><div class="x-plane-y"><div class="x-plane"><img src="cibi-plane-final.png" alt="" /></div></div></div>
+        </div>
+        <div class="x-layer x-land" data-depth="5" aria-hidden="true"><img src="cibi-hero-landscape.png" alt="" /></div>
+        <div class="x-layer x-petals" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="x-layer x-badges" data-depth="9" aria-hidden="true">
+          <div class="x-badge"><span>🟢</span>Allowed</div>
+          <div class="x-badge"><span>🟡</span>Limits</div>
+          <div class="x-badge"><span>🔴</span>Banned</div>
+        </div>
+
+        <nav class="x-nav" aria-label="Main">
+          <a class="x-logo" href="#top" aria-label="canibringit, home">
+            <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+              <rect x="3" y="7" width="20" height="15" rx="4" fill="#2F6B4F" />
+              <path d="M9 7V5.5A2.5 2.5 0 0 1 11.5 3h3A2.5 2.5 0 0 1 17 5.5V7" fill="none" stroke="#111" stroke-width="1.8" />
+              <path d="M8.5 14.5l3 3 6-6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            canibringit
+          </a>
+          <a class="x-nav__link" href="#how">How it works</a>
+          <a class="x-nav__link" href="#sources">Sources</a>
+          <a class="x-nav__link" href="#console">Demo</a>
+          <a class="x-btn-teal" href="#console" data-focus-ask>Try it free</a>
+        </nav>
+
+        <div class="x-copy">
+          <h1 class="x-h1">Know what you can pack<br />before <em>customs</em> does.</h1>
+          <p class="x-sub">Ask any item, any border. Answers come only from official customs and airline pages, with the exact line quoted.</p>
+        </div>
+
+        <form class="x-console" id="console" autocomplete="off">
+          <div class="x-route">
+            <div class="x-field">
+              <label for="from">Flying from</label>
+              <select id="from" name="from"></select>
+            </div>
+            <button class="x-swap" type="button" id="swap" aria-label="Swap countries">⇄</button>
+            <div class="x-field">
+              <label for="to">Flying to</label>
+              <select id="to" name="to"></select>
+            </div>
+            <div class="x-field x-field--airline">
+              <label for="airline">Airline <span style="color:#55555a">(optional)</span></label>
+              <input id="airline" name="airline" type="text" placeholder="e.g. Emirates" />
+            </div>
+          </div>
+          <div class="x-ask">
+            <input id="question" name="question" type="text" aria-label="Your question" required />
+            <button class="x-btn-teal" type="submit">
+              Check
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5L21 3l-8.5 18-2.2-7.3L3 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" /><path d="M10.3 13.7L21 3" stroke="currentColor" stroke-width="2" /></svg>
+            </button>
+          </div>
+          <div class="x-chips">
+            <button class="x-chip" type="button" data-q="Can I carry a 20,000 mAh power bank?">🔋 Power bank</button>
+            <button class="x-chip" type="button" data-q="How much cash can I take into the UAE?" data-to="UAE">💵 Cash into UAE</button>
+            <button class="x-chip" type="button" data-q="4 bottles of whisky into Japan?" data-to="Japan">🥃 Whisky into Japan</button>
+            <button class="x-chip" type="button" data-q="Can I bring alcohol into Dubai?" data-to="UAE">🍷 Alcohol into Dubai</button>
+          </div>
+        </form>
+
+        <div class="x-result" id="result" aria-live="polite"></div>
+      </section>
+
+      <main class="main">
+        <section class="section" id="how" data-nav="How it works">
+          <div class="head">
+            <p class="head__eyebrow">How it works</p>
+            <h2 class="x-title">Three steps, and every answer <em>shows its proof</em>.</h2>
+          </div>
+          <div class="steps">
+            <article class="step">
+              <div class="step__intro"><p class="step__num">01</p><p class="step__eyebrow">You</p></div>
+              <div>
+                <svg class="x-icon" viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#F6B08A" opacity=".35" /><circle cx="24" cy="25" r="17" fill="#F6B08A" opacity=".3" /><path d="M16 20h24a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H26l-6 5v-5h-4a3 3 0 0 1-3-3V23a3 3 0 0 1 3-3z" fill="none" stroke="#111" stroke-width="2" stroke-linejoin="round" /></svg>
+                <h3>Ask in plain words</h3>
+                <p>Pick your route and type the item.</p>
+              </div>
+            </article>
+            <article class="step">
+              <div class="step__intro"><p class="step__num">02</p><p class="step__eyebrow">Search</p></div>
+              <div>
+                <svg class="x-icon" viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#B8A6E0" opacity=".35" /><circle cx="32" cy="24" r="16" fill="#B8A6E0" opacity=".3" /><circle cx="25" cy="25" r="9" fill="none" stroke="#111" stroke-width="2" /><path d="M32 32l9 9" stroke="#111" stroke-width="2.4" stroke-linecap="round" /><path d="M21 25l3 3 5-6" fill="none" stroke="#2F6B4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                <h3>We read only official pages</h3>
+                <p>Live search limited to an allow-list of government customs and airline domains. No blogs or forums.</p>
+              </div>
+            </article>
+            <article class="step">
+              <div class="step__intro"><p class="step__num">03</p><p class="step__eyebrow">Answer</p></div>
+              <div>
+                <svg class="x-icon" viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#2F6B4F" opacity=".2" /><circle cx="22" cy="30" r="15" fill="#2F6B4F" opacity=".15" /><rect x="21" y="12" width="14" height="32" rx="7" fill="none" stroke="#111" stroke-width="2" /><circle cx="28" cy="19" r="3" fill="#c8373d" /><circle cx="28" cy="28" r="3" fill="#c98a12" /><circle cx="28" cy="37" r="3" fill="#1f8a5b" /></svg>
+                <h3>Get a verdict with proof</h3>
+                <p>A traffic-light answer plus the exact sentence and link. If no official source is found, it says “Not sure” instead of guessing.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="sources" data-nav="Sources">
+          <div class="head">
+            <p class="head__eyebrow">Sources we trust</p>
+            <h2 class="x-title">An allow-list, <em>not the open web</em>.</h2>
+          </div>
+          <div class="x-domains">
+            <span class="pill">iata.org</span><span class="pill">faa.gov</span><span class="pill">u.ae</span>
+            <span class="pill">dubaicustoms.gov.ae</span><span class="pill">customs.go.jp</span><span class="pill">cbic.gov.in</span>
+            <span class="pill">gov.uk</span><span class="pill">cbp.gov</span><span class="pill">cbsa-asfc.gc.ca</span>
+            <span class="pill">abf.gov.au</span><span class="pill">ica.gov.sg</span><span class="pill">zoll.de</span>
+          </div>
+        </section>
+
+        <section class="section" id="hood" data-nav="Under the hood">
+          <div class="head">
+            <p class="head__eyebrow">Under the hood · for judges</p>
+            <h2 class="x-title">Grounded retrieval, <em>quote required</em>.</h2>
+            <p class="head__sub">One request in, one verdict out. The model may only answer from text it fetched.</p>
+          </div>
+          <div class="x-arch" role="list" aria-label="Request flow">
+            <div class="x-node" role="listitem"><b>Browser</b><small>Route and question</small></div>
+            <span class="x-arrow" aria-hidden="true"><svg width="22" height="12" viewBox="0 0 22 12"><path d="M1 6h18M15 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" /></svg></span>
+            <div class="x-node x-node--key" role="listitem"><b>FastAPI</b><small>on Vultr Compute</small></div>
+            <span class="x-arrow" aria-hidden="true"><svg width="22" height="12" viewBox="0 0 22 12"><path d="M1 6h18M15 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" /></svg></span>
+            <div class="x-node" role="listitem"><b>Exa Search</b><small>Official-domain allow-list</small></div>
+            <span class="x-arrow" aria-hidden="true"><svg width="22" height="12" viewBox="0 0 22 12"><path d="M1 6h18M15 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" /></svg></span>
+            <div class="x-node" role="listitem"><b>Gemini</b><small>Answers only from the fetched text, quote required</small></div>
+            <span class="x-arrow" aria-hidden="true"><svg width="22" height="12" viewBox="0 0 22 12"><path d="M1 6h18M15 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" /></svg></span>
+            <div class="x-node x-node--key" role="listitem"><b>Verdict JSON</b><small>verdict, answer, limit, quote, source, fetched</small></div>
+            <span class="x-arrow" aria-hidden="true"><svg width="22" height="12" viewBox="0 0 22 12"><path d="M1 6h18M15 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" /></svg></span>
+            <div class="x-node" role="listitem"><b>Browser</b><small>Verdict card with the quote</small></div>
+          </div>
+          <div class="x-stack">
+            <span class="chip">FastAPI</span><span class="chip">Python</span><span class="chip">Exa</span><span class="chip">Gemini</span><span class="chip chip--solid">Vultr Compute</span>
+          </div>
+        </section>
+
+        <section class="section" id="why" data-nav="Why">
+          <div class="head">
+            <p class="head__eyebrow">Why it matters</p>
+            <h2 class="x-title">A wrong guess at the border <em>is expensive</em>.</h2>
+          </div>
+          <div class="cards">
+            <div><h3>Rules differ by country and change often.</h3></div>
+            <div><h3>Blogs and forums are outdated or wrong.</h3></div>
+            <div><h3>A wrong guess costs you a confiscated bag, a fine, or a missed flight.</h3></div>
+          </div>
+        </section>
+
+        <section class="x-cta" aria-label="Try it">
+          <h2>Packing tonight?<br /><em>Ask before you zip.</em></h2>
+          <button class="x-ghost" type="button" data-focus-ask>Ask a question</button>
+        </section>
+      </main>
+
+      <footer class="foot">
+        <p><strong>Built for HackGlobal 2026 · Powered by Vultr</strong><br />Not legal advice. Always confirm with official customs or your airline.</p>
+        <nav aria-label="Back to sections" data-auto></nav>
+        <a class="badge" href="https://hark.com/" target="_blank" rel="noopener"><span class="hark-mark"></span><span>built by hark</span></a>
+      </footer>
+    </div>
+    <script src="hark.js"></script>
+    <script>
+      // Set to your Vultr backend URL, e.g. http://YOUR_VULTR_IP:8000. When empty, the site runs in demo mode.
+      const API_BASE = "";
+
+      (function () {
+        var COUNTRIES = ["India", "UAE", "Japan", "USA", "UK", "Kenya", "Nigeria", "Pakistan", "Singapore", "Australia", "Germany", "Canada"];
+        var EXAMPLES = ["Can I carry a 20,000 mAh power bank?", "How much cash can I take into the UAE?", "4 bottles of whisky into Japan?", "Can I bring alcohol into Dubai?"];
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var $ = function (id) { return document.getElementById(id); };
+        var form = $("console"), from = $("from"), to = $("to"), airline = $("airline"), q = $("question"), result = $("result");
+
+        COUNTRIES.forEach(function (c) {
+          from.add(new Option(c, c, c === "India", c === "India"));
+          to.add(new Option(c, c, c === "UAE", c === "UAE"));
+        });
+        var swapBtn = $("swap");
+        swapBtn.addEventListener("click", function () {
+          var a = from.value; from.value = to.value; to.value = a;
+          [from, to].forEach(function (s) {
+            [].forEach.call(s.options, function (o) { o.selected = o.value === s.value; if (o.selected) o.setAttribute("selected", ""); else o.removeAttribute("selected"); });
+          });
+          var flipped = swapBtn.classList.toggle("is-flipped");
+          swapBtn.setAttribute("aria-label", "Swap countries (now " + from.value + " to " + to.value + ")");
+          swapBtn.setAttribute("aria-pressed", flipped ? "true" : "false");
+        });
+
+        /* ----- demo answers, from official sources ----- */
+        var DEMO = {
+          battery: { verdict: "limits", answer: "Yes, in your cabin bag only. Never in checked luggage.", limit: "Up to 100 Wh each (a 20,000 mAh bank is about 74 Wh). 101–160 Wh needs airline approval. Max 2 power banks.", quote: "Lithium-ion batteries are limited to a rating of 100 watt hours (Wh) per battery. With airline approval, passengers may also carry up to two spare larger lithium-ion batteries (101–160 Wh). Must be carry-on only and protected from damage and short circuit.", source_name: "FAA – Batteries Carried by Airline Passengers", source_url: "https://www.faa.gov/hazmat/packsafe/resources/airline-passengers-batteries", fetched: "14 Nov 2026" },
+          cash: { verdict: "limits", answer: "Yes, you can carry cash. Declare it if you have more than AED 60,000.", limit: "Declare above AED 60,000 (or the equivalent in other currencies), arriving or leaving.", quote: "Passengers departing from or arriving in the UAE and carrying cash, or financial instruments exceeding AED 60,000 or an equivalent amount in other currencies, are required to declare it to the customs authorities.", source_name: "u.ae – The Official Portal of the UAE Government", source_url: "https://u.ae/information-and-services/finance-and-investment/clearing-the-customs-and-paying-customs-duty", fetched: "14 Nov 2026" },
+          japan: { verdict: "limits", answer: "Yes. 3 bottles are duty-free. A 4th bottle is allowed but taxed.", limit: "3 bottles of 760 ml each per adult (20+). Extra bottles pay duty.", quote: "Alcoholic beverages: Up to three bottles (760ml as a bottle)", source_name: "Japan Customs – Duty-Free Allowance (FAQ 7105)", source_url: "https://www.customs.go.jp/english/c-answer_e/keitaibetsuso/7105_e.htm", fetched: "14 Nov 2026" },
+          dubai: { verdict: "limits", answer: "Yes, within the duty-free limit. Excess is confiscated.", limit: "Up to 4 litres of alcohol, or 2 cartons of beer (24 cans × 355 ml each).", quote: "Alcoholic beverages not exceeding 4 litres or 2 cartons of beer, each consisting of 24 cans not exceeding 355 ml for each can and the excess quantity will be confiscated.", source_name: "Dubai Customs – Passenger Customs Guide", source_url: "https://www.dubaicustoms.gov.ae/en/OpenData/Publications/PassengerCustomsGuide.pdf", fetched: "14 Nov 2026" },
+          unsure: { verdict: "unsure", answer: "I couldn't find an official source for that yet.", limit: "—", quote: "No official page matched, so I won't guess.", source_name: "IATA – Lithium battery guidance for passengers (general reference)", source_url: "https://www.iata.org/contentassets/6fea26dd84d24b26a7a1fd5788561d6e/passenger-lithium-battery.pdf", fetched: "14 Nov 2026" }
+        };
+
+        function demoMatch(text, dest) {
+          var t = text.toLowerCase();
+          var saysJapan = /japan/.test(t), saysUAE = /\buae\b|dubai|emirates|abu dhabi/.test(t);
+          if (/power ?bank|mah\b|batter/.test(t)) return DEMO.battery;
+          if (/\bcash\b|money|\baed\b|dirham/.test(t)) return (dest === "UAE" || saysUAE) ? DEMO.cash : DEMO.unsure;
+          if (/whisk(e)?y|wine|alcohol|bottle|liquor|beer/.test(t)) {
+            if (saysJapan) return DEMO.japan;
+            if (saysUAE) return DEMO.dubai;
+            if (dest === "Japan") return DEMO.japan;
+            if (dest === "UAE") return DEMO.dubai;
+          }
+          return DEMO.unsure;
+        }
+
+        /* ----- rendering ----- */
+        var LABELS = { allowed: "🟢 Allowed", limits: "🟡 Allowed with limits", banned: "🔴 Banned", unsure: "⚪ Not sure" };
+        function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+        function safeUrl(u) { return /^https?:\/\//i.test(u || "") ? u : ""; }
+        function domainOf(u) { try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return ""; } }
+
+        function showSearching() {
+          result.innerHTML = "";
+          var card = el("div", "x-card x-searching");
+          var p = el("p", null, "Searching official sources");
+          var dots = el("span", "x-dots"); dots.innerHTML = "<i></i><i></i><i></i>"; p.appendChild(dots);
+          var tick = el("div", "x-ticker");
+          var doms = ["iata.org", "faa.gov", "u.ae", "customs.go.jp", "dubaicustoms.gov.ae"];
+          tick.innerHTML = doms.map(function (d) { return "<span>" + d + "</span>"; }).join(" · ");
+          card.appendChild(p); card.appendChild(tick); result.appendChild(card);
+          var i = 0, spans = tick.querySelectorAll("span");
+          var timer = setInterval(function () {
+            spans.forEach(function (s, k) { s.innerHTML = k === i ? "<b>" + doms[k] + "</b>" : doms[k]; });
+            i = (i + 1) % doms.length;
+          }, 260);
+          return function () { clearInterval(timer); };
+        }
+
+        function answerText(d, route) {
+          return [LABELS[d.verdict] || LABELS.unsure, route, d.answer, "Limit: " + d.limit, "“" + d.quote + "”", "Source: " + d.source_name + " " + d.source_url, "Fetched " + d.fetched, "Checked with Can I Bring It?. Not legal advice."].filter(Boolean).join("\n");
+        }
+
+        function render(d, demo, route) {
+          result.innerHTML = "";
+          var v = LABELS[d.verdict] ? d.verdict : "unsure";
+          var card = el("article", "x-card");
+          var top = el("div", "x-v-top");
+          var left = el("div"); left.style.display = "flex"; left.style.flexWrap = "wrap"; left.style.gap = "8px"; left.style.alignItems = "center";
+          var st = el("span", "x-status", LABELS[v]); st.setAttribute("data-v", v); left.appendChild(st);
+          if (demo) left.appendChild(el("span", "x-tag", "Demo mode"));
+          top.appendChild(left); top.appendChild(el("span", "x-route-line", route));
+          card.appendChild(top);
+          card.appendChild(el("p", "x-answer", d.answer || ""));
+          var dl = el("dl", "x-limit"); dl.appendChild(el("dt", null, "Limit")); dl.appendChild(el("dd", null, d.limit || "—")); card.appendChild(dl);
+          if (d.quote) card.appendChild(el("blockquote", "x-quote", "“" + d.quote + "”"));
+          var src = el("p", "x-src"), url = safeUrl(d.source_url);
+          if (url) {
+            var a = el("a", null, d.source_name || domainOf(url)); a.href = url; a.target = "_blank"; a.rel = "noopener";
+            src.appendChild(a); src.appendChild(el("span", null, domainOf(url)));
+          } else if (d.source_name) src.appendChild(el("span", null, d.source_name));
+          if (d.fetched) src.appendChild(el("span", null, "Fetched " + d.fetched));
+          card.appendChild(src);
+          var acts = el("div", "x-actions");
+          var copy = el("button", "x-ghost", "Copy answer"); copy.type = "button";
+          var share = el("button", "x-ghost", "Share"); share.type = "button";
+          var text = answerText(d, route);
+          function flash(btn, msg) { var o = btn.textContent; btn.textContent = msg; setTimeout(function () { btn.textContent = o; }, 1600); }
+          function doCopy(btn) {
+            var done = function () { flash(btn, "Copied"); };
+            if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text); done(); });
+            else { fallbackCopy(text); done(); }
+          }
+          copy.addEventListener("click", function () { doCopy(copy); });
+          share.addEventListener("click", function () {
+            if (navigator.share) navigator.share({ title: "Can I Bring It?", text: text }).catch(function () {});
+            else doCopy(share);
+          });
+          acts.appendChild(copy); acts.appendChild(share); card.appendChild(acts);
+          card.appendChild(el("p", "x-legal", "Not legal advice. Rules change, so confirm with customs or your airline."));
+          result.appendChild(card);
+        }
+        function fallbackCopy(t) {
+          var ta = document.createElement("textarea"); ta.value = t; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+          document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); } catch (e) {} ta.remove();
+        }
+        function renderError() {
+          result.innerHTML = "";
+          var card = el("article", "x-card");
+          var st = el("span", "x-status", "⚪ Couldn't reach the checker"); st.setAttribute("data-v", "unsure"); card.appendChild(st);
+          card.appendChild(el("p", "x-answer", "Something went wrong on our side. Try again in a moment."));
+          card.appendChild(el("p", "x-legal", "Not legal advice. Rules change, so confirm with customs or your airline."));
+          result.appendChild(card);
+        }
+
+        var busy = false;
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var question = q.value.trim();
+          if (!question) { q.focus(); return; }
+          if (busy) return; busy = true;
+          var payload = { from: from.value, to: to.value, airline: airline.value.trim(), question: question };
+          var route = payload.from + " → " + payload.to + (payload.airline ? " · " + payload.airline : "");
+          var stop = showSearching();
+          var finish = function () { stop(); busy = false; };
+          if (API_BASE) {
+            fetch(API_BASE.replace(/\/$/, "") + "/api/check", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) })
+              .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+              .then(function (d) { finish(); render(d, false, route); })
+              .catch(function () { finish(); renderError(); });
+          } else {
+            setTimeout(function () { finish(); render(demoMatch(question, payload.to), true, route); }, reduce ? 300 : 1500);
+          }
+        });
+
+        document.querySelectorAll(".x-chip").forEach(function (c) {
+          c.addEventListener("click", function () {
+            if (c.dataset.to) to.value = c.dataset.to;
+            if (from.value === to.value) from.value = to.value === "India" ? "UAE" : "India";
+            q.value = c.dataset.q;
+            form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event("submit", { cancelable: true }));
+          });
+        });
+
+        document.querySelectorAll("[data-focus-ask]").forEach(function (b) {
+          b.addEventListener("click", function (e) {
+            e.preventDefault();
+            form.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+            setTimeout(function () { q.focus({ preventScroll: true }); }, reduce ? 0 : 450);
+          });
+        });
+
+        /* ----- typewriter placeholder ----- */
+        if (reduce) { q.placeholder = EXAMPLES[0]; }
+        else {
+          var ex = 0, ch = 0, del = false;
+          (function type() {
+            var s = EXAMPLES[ex];
+            if (!del) { ch++; if (ch > s.length) { del = true; setTimeout(type, 1800); return; } }
+            else { ch--; if (ch === 0) { del = false; ex = (ex + 1) % EXAMPLES.length; } }
+            q.placeholder = s.slice(0, ch) || " ";
+            setTimeout(type, del ? 28 : 55);
+          })();
+        }
+
+        /* ----- mouse parallax: clouds most, landscape least ----- */
+        if (!reduce && window.matchMedia("(pointer: fine)").matches) {
+          var hero = $("hero"), layers = hero.querySelectorAll("[data-depth]"), raf = 0, mx = 0, my = 0;
+          hero.addEventListener("mousemove", function (e) {
+            var r = hero.getBoundingClientRect();
+            mx = (e.clientX - r.left) / r.width - 0.5; my = (e.clientY - r.top) / r.height - 0.5;
+            if (!raf) raf = requestAnimationFrame(function () {
+              raf = 0;
+              layers.forEach(function (l) { var d = +l.dataset.depth; l.style.transform = "translate3d(" + (-mx * d) + "px," + (-my * d * 0.6) + "px,0)"; });
+            });
+          });
+          hero.addEventListener("mouseleave", function () { layers.forEach(function (l) { l.style.transform = ""; }); });
+        }
+      })();
+    </script>
+  </body>
+</html>
