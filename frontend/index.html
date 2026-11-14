@@ -456,7 +456,7 @@
               <div>
                 <svg class="x-icon" viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#B8A6E0" opacity=".35" /><circle cx="32" cy="24" r="16" fill="#B8A6E0" opacity=".3" /><circle cx="25" cy="25" r="9" fill="none" stroke="#111" stroke-width="2" /><path d="M32 32l9 9" stroke="#111" stroke-width="2.4" stroke-linecap="round" /><path d="M21 25l3 3 5-6" fill="none" stroke="#2F6B4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
                 <h3>We read only official pages</h3>
-                <p>Live search limited to an allow-list of government customs and airline domains. No blogs or forums.</p>
+                <p>We index an allow-list of 21 government customs and aviation pages, then search them with hybrid retrieval. No blogs or forums.</p>
               </div>
             </article>
             <article class="step">
@@ -487,14 +487,14 @@
           <div class="head">
             <p class="head__eyebrow">Under the hood · for judges</p>
             <h2 class="x-title">Grounded retrieval, <em>quote required</em>.</h2>
-            <p class="head__sub">One request in, one verdict out. The model may only answer from text it fetched.</p>
+            <p class="head__sub">One request in, one verdict out. The model may only answer from official text, and every quote is checked against the source.</p>
           </div>
           <div class="x-arch" role="list" aria-label="Request flow">
             <div class="x-node" role="listitem"><b>Browser</b><small>Route and question</small></div>
             <span class="x-arrow" aria-hidden="true"><svg width="22" height="12" viewBox="0 0 22 12"><path d="M1 6h18M15 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" /></svg></span>
             <div class="x-node x-node--key" role="listitem"><b>FastAPI</b><small>on Vultr Compute</small></div>
             <span class="x-arrow" aria-hidden="true"><svg width="22" height="12" viewBox="0 0 22 12"><path d="M1 6h18M15 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" /></svg></span>
-            <div class="x-node" role="listitem"><b>Exa Search</b><small>Official-domain allow-list</small></div>
+            <div class="x-node" role="listitem"><b>Hybrid retrieval</b><small>Gemini embeddings + BM25 over 21 official pages</small></div>
             <span class="x-arrow" aria-hidden="true"><svg width="22" height="12" viewBox="0 0 22 12"><path d="M1 6h18M15 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" /></svg></span>
             <div class="x-node" role="listitem"><b>Gemini</b><small>Answers only from the fetched text, quote required</small></div>
             <span class="x-arrow" aria-hidden="true"><svg width="22" height="12" viewBox="0 0 22 12"><path d="M1 6h18M15 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" /></svg></span>
@@ -503,7 +503,7 @@
             <div class="x-node" role="listitem"><b>Browser</b><small>Verdict card with the quote</small></div>
           </div>
           <div class="x-stack">
-            <span class="chip">FastAPI</span><span class="chip">Python</span><span class="chip">Exa</span><span class="chip">Gemini</span><span class="chip chip--solid">Vultr Compute</span>
+            <span class="chip">FastAPI</span><span class="chip">Python</span><span class="chip">RAG</span><span class="chip">Gemini</span><span class="chip chip--solid">Vultr Compute</span>
           </div>
         </section>
 
