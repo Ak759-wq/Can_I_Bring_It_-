@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
-# One-shot setup on a fresh Vultr Compute instance (Ubuntu 22.04/24.04).
+# One-shot setup on a fresh Vultr Compute instance (Ubuntu 22.04/24.04/26.x).
 #   curl -fsSL https://raw.githubusercontent.com/Ak759-wq/Can_I_Bring_It_-/main/deploy/vultr-setup.sh | bash -s -- YOUR_GEMINI_KEY
 set -euo pipefail
 KEY="${1:?usage: vultr-setup.sh GEMINI_API_KEY}"
-apt-get update -y && apt-get install -y git docker.io docker-compose-v2 ufw
+export DEBIAN_FRONTEND=noninteractive
+apt-get update -y && apt-get install -y git curl ufw
+# Docker + compose: distro packages first, Docker's official installer as a fallback (e.g. newer Ubuntu releases)
+apt-get install -y docker.io docker-compose-v2 || curl -fsSL https://get.docker.com | sh
+docker compose version >/dev/null 2>&1 || curl -fsSL https://get.docker.com | sh
 systemctl enable --now docker
 cd /opt
 [ -d Can_I_Bring_It_- ] || git clone https://github.com/Ak759-wq/Can_I_Bring_It_-.git
