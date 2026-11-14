@@ -20,7 +20,7 @@ RATE_PER_MIN=20
 CORS_ORIGINS=*
 ENV
 ufw allow 22 && ufw allow 80 && ufw --force enable || true
-docker compose up -d --build
-sleep 5
+docker compose -p can-i-bring-it up -d --build
+sleep 8
 curl -s localhost/api/health && echo
 echo "Live at: http://$(curl -s ifconfig.me)/"
