@@ -91,6 +91,25 @@ def verify_quote(quote, text):
     return fuzz.partial_ratio(q, t) >= 92
 
 
+SENT = re.compile(r"(?<=[.!?])\s+")
+
+
+def snap_quote(quote, text, threshold=85):
+    """Return the real sentence span from text that best matches the model's quote, or None."""
+    q = norm(quote)
+    if len(q) < 15:
+        return None
+    sents = [x.strip() for x in SENT.split(text) if x.strip()]
+    best, score = None, 0
+    for i in range(len(sents)):
+        for j in (1, 2):
+            cand = " ".join(sents[i:i + j])
+            sc = fuzz.ratio(q, norm(cand))
+            if sc > score:
+                best, score = cand, sc
+    return best if score >= threshold else None
+
+
 def unsure(msg="I couldn't find an official source that answers this for your route, so I won't guess."):
     return {
         "verdict": "unsure",
@@ -116,24 +135,30 @@ def answer(index, origin, dest, airline, question):
         f"Route: from {origin} to {dest}. Airline: {airline or 'not specified'}.\n"
         f"Question: {question}\n\nOfficial excerpts:\n{ctx}"
     )
-    try:
-        raw = gemini.generate_json(SYSTEM, user, SCHEMA)
-        out = json.loads(raw)
-    except Exception:
-        return unsure("The checker couldn't read the official sources right now. Please try again.")
-
-    v = out.get("verdict") if out.get("verdict") in VERDICTS else "unsure"
-    sid = out.get("source_id")
-    if v == "unsure" or not isinstance(sid, int) or not (0 <= sid < len(hits)):
-        return unsure()
-    hit = hits[sid]
-    quote = (out.get("quote") or "").strip().strip('"“”')
-    if not verify_quote(quote, hit["text"]):
-        # the model's quote is not in the source: try the other hits, else refuse
-        alt = next((h for h in hits if verify_quote(quote, h["text"])), None)
-        if not alt:
-            return unsure("I found related official pages but couldn't verify an exact quote, so I won't guess.")
-        hit = alt
+    out, hit, quote = None, None, ""
+    for attempt in range(2):  # one retry if the model's quote can't be verified
+        try:
+            out = json.loads(gemini.generate_json(SYSTEM, user, SCHEMA, temperature=0.1 if attempt == 0 else 0.0))
+        except Exception:
+            if attempt == 0:
+                continue
+            return unsure("The checker couldn't read the official sources right now. Please try again.")
+        v = out.get("verdict") if out.get("verdict") in VERDICTS else "unsure"
+        sid = out.get("source_id")
+        if v == "unsure" or not isinstance(sid, int) or not (0 <= sid < len(hits)):
+            return unsure()
+        quote = (out.get("quote") or "").strip().strip('"“”')
+        hit = hits[sid] if verify_quote(quote, hits[sid]["text"]) else next(
+            (h for h in hits if verify_quote(quote, h["text"])), None)
+        if hit:
+            break
+        # Snap a near-verbatim quote to the real sentence in the cited excerpt, so what we show is always source text.
+        snapped = snap_quote(quote, hits[sid]["text"])
+        if snapped:
+            hit, quote = hits[sid], snapped
+            break
+    if not hit:
+        return unsure("I found related official pages but couldn't verify an exact quote, so I won't guess.")
     return {
         "verdict": v,
         "answer": out.get("answer", "").strip(),
