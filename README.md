@@ -12,7 +12,7 @@ Customs and baggage rules differ by country and change often. Blogs and forums a
 ## How it works
 1. **Ask in plain words.** Pick the route (from → to, optional airline) and type the item.
 2. **Retrieve from official pages only.** At ingest time the backend fetches an allow-list of government customs and aviation-safety pages (HTML and PDF), chunks them and embeds them with Gemini. At question time it runs hybrid retrieval (Gemini embeddings + BM25), filtered to the origin, destination and global aviation rules, boosted toward the destination country's customs rules.
-3. **Grounded verdict with proof.** Gemini 2.5 Flash answers **only** from the retrieved excerpts, in a strict JSON schema, and must copy a verbatim quote and the excerpt number.
+3. **Grounded verdict with proof.** Gemini 3.5 Flash-Lite answers **only** from the retrieved excerpts, in a strict JSON schema, and must copy a verbatim quote and the excerpt number.
 4. **Quote verification.** The backend checks the quote really appears in that official excerpt (exact or ≥92% fuzzy match). If it doesn't, or the sources don't cover the route, the answer is **⚪ Not sure** instead of a guess.
 
 ## Architecture
@@ -23,7 +23,7 @@ Browser (frontend/index.html)
 FastAPI on Vultr Compute (Docker)
    ├─ ingest.py   fetch allow-listed pages → clean → chunk → Gemini embeddings → data/
    ├─ rag.py      hybrid search (dense + BM25), country filter, destination boost
-   │              Gemini 2.5 Flash, JSON schema, verbatim quote required
+   │              Gemini 3.5 Flash-Lite, JSON schema, verbatim quote required
    │              quote verified against the source text, else "Not sure"
    └─ app.py      /api/check · /api/sources · /api/health · serves the frontend · cache · rate limit
    ▼
@@ -75,7 +75,7 @@ Response:
 ```
 
 ## Tech stack
-HTML/CSS/JS frontend · FastAPI (Python) · Gemini 2.5 Flash + gemini-embedding-001 · BM25 (rank-bm25) · RapidFuzz quote verification · Docker · Vultr Compute
+HTML/CSS/JS frontend · FastAPI (Python) · Gemini 3.5 Flash-Lite + gemini-embedding-001 · BM25 (rank-bm25) · RapidFuzz quote verification · Docker · Vultr Compute
 
 ## Credits
 Illustrations are AI-generated watercolor artwork made for this project. Demo answers are quoted from the FAA, the UAE Government Portal (u.ae), Japan Customs and Dubai Customs.

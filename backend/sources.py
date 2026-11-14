@@ -10,7 +10,7 @@ SOURCES = [
     {"name": "FAA – Batteries Carried by Airline Passengers", "url": "https://www.faa.gov/hazmat/packsafe/resources/airline-passengers-batteries", "countries": ["ANY", "USA"]},
     {"name": "IATA – Lithium Battery Guidance for Passengers", "url": "https://www.iata.org/contentassets/6fea26dd84d24b26a7a1fd5788561d6e/passenger-lithium-battery.pdf", "countries": ["ANY"]},
     {"name": "TSA – Liquids, Aerosols and Gels Rule", "url": "https://www.tsa.gov/travel/security-screening/liquids-aerosols-gels-rule", "countries": ["ANY", "USA"]},
-    {"name": "GOV.UK – Hand luggage restrictions", "url": "https://www.gov.uk/hand-luggage-restrictions", "countries": ["ANY", "UK"]},
+    {"name": "GOV.UK – Hand luggage restrictions", "url": "https://www.gov.uk/hand-luggage-restrictions/print", "countries": ["ANY", "UK"]},
 
     # ---- UAE ----
     {"name": "Dubai Customs – Passenger Customs Guide", "url": "https://www.dubaicustoms.gov.ae/en/OpenData/Publications/PassengerCustomsGuide.pdf", "countries": ["UAE"]},
@@ -27,8 +27,8 @@ SOURCES = [
     {"name": "CBIC – Guide for International Travellers", "url": "https://www.cbic.gov.in/resources/htdocs-cbec/travellerguide_atithi.pdf", "countries": ["India"]},
 
     # ---- UK ----
-    {"name": "GOV.UK – Bringing goods into the UK (arrivals from outside the EU)", "url": "https://www.gov.uk/duty-free-goods/arrivals-from-outside-the-eu", "countries": ["UK"]},
-    {"name": "GOV.UK – Taking cash in and out of Great Britain", "url": "https://www.gov.uk/bringing-cash-into-uk", "countries": ["UK"]},
+    {"name": "GOV.UK – Bringing goods into the UK (arrivals from outside the EU)", "url": "https://www.gov.uk/duty-free-goods/print", "countries": ["UK"]},
+    {"name": "GOV.UK – Taking cash in and out of Great Britain", "url": "https://www.gov.uk/bringing-cash-into-uk/print", "countries": ["UK"]},
 
     # ---- USA ----
     {"name": "CBP – Prohibited and Restricted Items", "url": "https://www.cbp.gov/travel/us-citizens/know-before-you-go/prohibited-and-restricted-items", "countries": ["USA"]},
@@ -44,7 +44,10 @@ SOURCES = [
     {"name": "Zoll – Restrictions when entering Germany", "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/Restrictions/restrictions_node.html", "countries": ["Germany"]},
 
     # ---- Canada ----
-    {"name": "CBSA – Travellers: duty-free and what you can bring", "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/td-dv-eng.html", "countries": ["Canada"]},
+    {"name": "CBSA – Declaring goods, cash and allowances when entering Canada", "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/declare-eng.html", "countries": ["Canada"]},
+
+    # ---- Singapore prohibited goods (CAAS AIP, official) ----
+    {"name": "CAAS Singapore AIP GEN 1.3 – Customs: prohibited goods and allowances", "url": "https://aim-sg.caas.gov.sg/aim-content/uploads/aip/03-SEP-2026/AIP-1/2026-09-03-000000/html/eAIP/SG-GEN-1.3-en-GB.html", "countries": ["Singapore"]},
 ]
 
 ALLOWED_DOMAINS = sorted({s["url"].split("/")[2].removeprefix("www.") for s in SOURCES})

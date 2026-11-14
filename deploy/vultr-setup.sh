@@ -10,7 +10,7 @@ cd /opt
 cd Can_I_Bring_It_- && git pull
 cat > backend/.env <<ENV
 GEMINI_API_KEY=$KEY
-GEMINI_MODEL=gemini-2.5-flash
+GEMINI_MODEL=gemini-3.5-flash-lite
 GEMINI_EMBED_MODEL=gemini-embedding-001
 RATE_PER_MIN=20
 CORS_ORIGINS=*
