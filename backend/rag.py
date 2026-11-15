@@ -41,9 +41,23 @@ SCHEMA = {
 
 TOKEN = re.compile(r"[a-z0-9]+")
 
+# User wording often joins product names that official pages keep as separate
+# words. Keep retrieval broad without changing the question sent to the model.
+QUERY_ALIASES = (
+    (re.compile(r"\bpowerbank(s)?\b", re.I), "power bank portable charger"),
+    (re.compile(r"\bpower[- ]?banks?\b", re.I), "power bank portable charger"),
+    (re.compile(r"\bmah\b", re.I), "mAh milliamp hours"),
+)
+
 
 def tok(s):
     return TOKEN.findall(s.lower())
+
+
+def retrieval_query(s):
+    for pattern, replacement in QUERY_ALIASES:
+        s = pattern.sub(replacement, s)
+    return s
 
 
 def norm(s):
@@ -66,6 +80,7 @@ class Index:
         return list(seen.values())
 
     def search(self, query, countries, k=TOP_K, dest=None):
+        query = retrieval_query(query)
         qv = np.array(gemini.embed([query], task="RETRIEVAL_QUERY")[0], dtype=np.float32)
         qv /= np.linalg.norm(qv) + 1e-9
         dense = self.vecs @ qv
@@ -79,7 +94,14 @@ class Index:
             score = score + 0.08 * np.array([dest in r["countries"] for r in self.records])
         score = np.where(mask, score, -1.0)
         order = np.argsort(-score)[:k]
-        return [self.records[i] for i in order if score[i] > 0]
+        results = [self.records[i] for i in order if score[i] > 0]
+        if results:
+            return results
+        # A relevant lexical match must not disappear just because the dense
+        # embedding score is negative (this can happen for short/compound
+        # product names such as "powerbank").
+        lexical_order = np.argsort(-sparse)
+        return [self.records[i] for i in lexical_order if mask[i] and sparse[i] > 0][:k]
 
 
 def verify_quote(quote, text):
